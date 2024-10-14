@@ -1,0 +1,72 @@
+<nav class="fixed top-0 left-0 z-50 bg-gray-50 dark:bg-gray-950 shadow-md w-full dark:text-gray-50 border-b-8">
+    <div class="text-xl text-black dark:text-gray-50 p-4 flex justify-between items-center py-4">
+        <div class="flex items-center justify-start space-x-2">
+            <a href="#home"
+                class="hover:text-black hover:bg-white text-black bg-white p-2 rounded-full text-xl hover:border-black border-2 border-white"
+                (click)="navigateService.scrollToComponent('app-home')" aria-label="Accéder à la page d'accueil">
+                AG
+            </a>
+
+            <button (click)="toggleTheme()" aria-label="Changer le thème">
+                <span *ngIf="isDarkMode()" class="inline-block hover:scale-150 transition-transform duration-300">
+                    🌙
+                </span>
+                <span *ngIf="!isDarkMode()" class="inline-block hover:scale-150 transition-transform duration-300">
+                    ☀️
+                </span>
+            </button>
+        </div>
+
+        <div class="hidden lg:flex items-center p-4 justify-center flex-grow">
+            <a class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
+                (click)="navigateService.scrollToComponent('app-realisations')" aria-label="Accéder aux réalisations">Réalisations</a>
+            <span class="mx-2">|</span>
+
+            <a class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
+                (click)="navigateService.scrollToComponent('app-experiences')" aria-label="Accéder aux expériences professionnelles">Expériences Professionnelles</a>
+            <span class="mx-2">|</span>
+
+            <a class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
+                (click)="navigateService.scrollToComponent('app-diplomes')" aria-label="Accéder aux diplômes et formation">Diplômes et Formation</a>
+            <span class="mx-2">|</span>
+
+            <a class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
+                (click)="navigateService.scrollToComponent('app-contact')" aria-label="Accéder à la section contact">Contact</a>
+        </div>
+
+        <!-- Bouton pour le menu mobile -->
+        <button (click)="toggleMenu()" class="lg:hidden z-50" aria-label="Ouvrir le menu">
+            <div class="w-6 h-6 relative">
+                <svg *ngIf="!isMenuOpen" class="w-6 h-6 dark:text-white text-black" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg *ngIf="isMenuOpen" class="w-6 h-6 dark:text-white text-black" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </div>
+        </button>
+    </div>
+
+    <!-- Menu mobile -->
+    <div id="mobileMenu" [ngClass]="{'hidden': !isMenuOpen, 'block': isMenuOpen}"
+        class="absolute w-full h-screen z-10 lg:hidden text-3xl bg-gray-50 top-0 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-md shadow-md dark:bg-gray-900 dark:text-white text-center">
+        <div class="p-4 flex flex-col items-center justify-center h-full space-y-4">
+            <a class="block py-2 cursor-pointer"
+                (click)="navigateService.scrollToComponent('app-realisations'); closeMenu()" aria-label="Accéder aux réalisations">Réalisations</a>
+            <span>-^-</span>
+
+            <a class="block py-2 cursor-pointer"
+                (click)="navigateService.scrollToComponent('app-experiences'); closeMenu()" aria-label="Accéder aux expériences professionnelles">Expériences Professionnelles</a>
+            <span>-^-</span>
+
+            <a class="block py-2 cursor-pointer"
+                (click)="navigateService.scrollToComponent('app-diplomes'); closeMenu()" aria-label="Accéder aux diplômes et formation">Diplômes et Formation</a>
+            <span>-^-</span>
+
+            <a class="block py-2 cursor-pointer"
+                (click)="navigateService.scrollToComponent('app-contact'); closeMenu()" aria-label="Accéder à la section contact">Contact</a>
+        </div>
+    </div>
+</nav>

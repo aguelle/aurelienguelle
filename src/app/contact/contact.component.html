@@ -1,0 +1,40 @@
+
+<div class=" flex flex-col justify-center items-center text-center rounded-lg w-full dark:bg-gray-900 bg-gray-200  shadow py-10 mx-4">
+  <h2 class="text-4xl font-bold text-black dark:text-gray-50  mb-6">Contactez-moi</h2>
+  
+  <form *ngIf="!messageSent" class="space-y-4 flex flex-col" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="flex justify-between items-center">
+      <label class="mr-4 w-32 text-left" for="firstName">Prénom:</label>
+      <input class="w-full rounded text-left dark:text-black" id="firstName" formControlName="firstName" required>
+    </div>
+    <div class="flex justify-between items-center">
+      <label class="mr-4 w-32 text-left" for="lastName">Nom:</label>
+      <input class="w-full rounded text-left dark:text-black" id="lastName" formControlName="lastName" required>
+    </div>
+    <div class="flex justify-between items-start">
+      <label class="mr-4 w-32 text-left" for="content">Message:</label>
+      <textarea class="w-full rounded bg-gray-50 dark:text-black text-left" id="content" formControlName="content" required></textarea>
+    </div>
+    <button       class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border border-blue-500 dark:border-blue-700 transform transition-transform duration-300 ease-in-out hover:scale-105"
+    aria-label="Aller à la section contact">
+Envoyer</button>
+  </form>
+
+  <div *ngIf="messageSent"><app-notification></app-notification>
+
+  </div>
+
+  <div class="flex flex-col items-center space-y-4 mt-6">
+    <div class="flex items-end space-x-2">
+      <fa-icon [icon]="['fas', 'phone']"></fa-icon>
+      <a href="tel:0640400920" class="text-lg font-semibold">06 40 40 09 20</a>
+    </div>
+    <div class="flex items-end space-x-2">
+      <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
+      <a href="mailto:aurelien.guelle@gmail.com" class="text-lg font-semibold">aurelien.guelle&#64;gmail.com</a>
+    </div>
+
+<app-social-media></app-social-media>
+
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<div class="py-10 w-full ">
+  <h2 class="
+  text-3xl
+  text-center 
+  font-bold 
+  text-black 
+  dark:text-gray-50 
+  px-4">Mes Diplômes et Titres Professionnels 👨🏻‍🎓</h2>
+  
+  <div>
+    <div class="
+    grid 
+    grid-cols-1 
+    md:grid-cols-3
+    gap-4 
+    mt-4">
+      
+      <div *ngFor="let diplome of diplomes" 
+      class="
+      flex 
+      flex-col 
+      justify-between 
+      bg-white 
+      dark:bg-gray-700 
+      shadow-md 
+      p-6 
+      m-4 
+      lg:m-10 
+      rounded-lg 
+      hover:scale-105 
+      transition-transform 
+      duration-300">
+      <div class="flex justify-between">
+
+        <h3 class=" font-bold">{{ diplome.nom }} </h3>
+        <span>🎓</span>
+      </div>
+        <p class="text-xl font-semibold my-2">Compétences acquises :</p>
+        
+        <div >
+          <ul class="my-4 bg-gray-50 p-2 rounded-lg space-y-1">
+            <li *ngFor="let competence of diplome.competences" class="
+            border-b-2 dark:text-gray-600">{{ competence }}</li>
+          </ul>
+          
+        </div>
+        <div class="
+        flex 
+        flex-row 
+        justify-between 
+        mt-auto 
+        items-end">
+        <div class=" rounded p-2 m-2">
+          <a class="font-bold" href="{{ diplome.siteWeb}}">{{ diplome.ecole }}</a>
+          <p class="text-gray-600 dark:text-gray-50">{{ diplome.lieu}}</p>
+          <p class="text-gray-600 dark:text-gray-50">{{ diplome.date}}</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hidden">
+
+  <div class="shadow-sm rounded">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original-wordmark.svg" alt="Logo Angular" class="hidden dark:block size-20">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-plain-wordmark.svg" alt="Logo Angular" class="dark:hidden size-20">
+  </div>
+  
+  <div class="shadow-sm rounded">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original-wordmark.svg" alt="Logo Tailwind CSS" class="hidden dark:block size-20">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-plain-wordmark.svg" alt="Logo Tailwind CSS" class="dark:hidden size-20">
+  </div>
+  
+  <div class="shadow-sm rounded">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" alt="Logo MySQL" class="hidden dark:block size-20">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-plain-wordmark.svg" alt="Logo MySQL" class="dark:hidden size-20">
+  </div>
+  
+  <div class="shadow-sm rounded">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-plain.svg" alt="Logo PHP" class="dark:hidden size-20">
+  </div>
+  
+  <div class="shadow-sm rounded py-2">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" alt="Logo Figma" class="hidden dark:block size-10">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-plain.svg" alt="Logo Figma" class="dark:hidden size-10">
+  </div>
+  
+</div>
