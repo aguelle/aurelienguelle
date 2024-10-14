@@ -2,37 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Masque la barre de défilement */
-.hide-scrollbar::-webkit-scrollbar {
-    display: none; /* Pour Chrome, Safari et Opera */
-}
-
-.hide-scrollbar {
-    -ms-overflow-style: none; /* Pour Internet Explorer et Edge */
-    scrollbar-width: none; /* Pour Firefox */
-}
-
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-.animate-fade-in {
-    animation: fadeIn 0.5s ease-out forwards;
-}
-
-@keyframes shake {
-    0% { transform: translate(0); }
-    25% { transform: translate(-2px, 0); }
-    50% { transform: translate(2px, 0); }
-    75% { transform: translate(-2px, 0); }
-    100% { transform: translate(0); }
-}
-
-.animate-shake {
-    animation: shake 1s ease-in-out infinite;
-}
-
 /* Reset CSS */
 * {
     margin: 0;
@@ -41,6 +10,61 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif; /* Utilisez votre police souhaitée */
-    font-weight: normal; /* Assurez-vous que cela correspond à votre design */
+    font-family: 'Arial', sans-serif;
+    /* Utilisez votre police souhaitée */
+    font-weight: normal;
+    /* Assurez-vous que cela correspond à votre design */
+}
+
+/* Masque la barre de défilement */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* Pour Chrome, Safari et Opera */
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    /* Pour Internet Explorer et Edge */
+    scrollbar-width: none;
+    /* Pour Firefox */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(0);
+    }
+
+    25% {
+        transform: translate(-2px, 0);
+    }
+
+    50% {
+        transform: translate(2px, 0);
+    }
+
+    75% {
+        transform: translate(-2px, 0);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+.animate-shake {
+    animation: shake 1s ease-in-out infinite;
 }

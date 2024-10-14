@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MenuComponent } from "./menu/menu.component";
 import { FooterComponent } from "./footer/footer.component";
@@ -32,34 +32,5 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 export class AppComponent {
 
   constructor(public navigateService: NavigateService) {}
-
   title = 'aguelle';
-  backgroundColor = 'bg-gray-50';
-
-  ngOnInit() {
-    this.updateBackgroundColor(window.scrollX);
-  }
-
-  ngOnDestroy() {
-    window.removeEventListener('scroll', this.onScroll);
-  }
-
-  @HostListener('window:scroll', ['$event'])
-  onScroll(event: Event) {
-    const scrollPosition = window.scrollX;
-    this.updateBackgroundColor(scrollPosition);
-  }
-
-  updateBackgroundColor(scrollPosition: number) {
-    // Changez les couleurs en fonction de la position de défilement
-    if (scrollPosition < 20) {
-      this.backgroundColor = 'bg-white'; // Couleur claire
-    } else if (scrollPosition < 40) {
-      this.backgroundColor = 'bg-red-300'; // Couleur intermédiaire
-    } else {
-      this.backgroundColor = 'bg-blue-800'; // Couleur sombre
-    }
-  }
-
-
 }
