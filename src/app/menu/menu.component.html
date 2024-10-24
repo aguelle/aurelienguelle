@@ -1,9 +1,7 @@
 <nav class="fixed top-0 left-0 z-50 bg-gray-50 dark:bg-gray-950 shadow-md w-full dark:text-gray-50 border-b-8">
     <div class="text-xl text-black dark:text-gray-50 p-4 flex justify-between items-center py-4">
         <div class="flex items-center justify-start space-x-2">
-            <a href="#home"
-                class="hover:text-black hover:bg-white text-black bg-white p-2 rounded-full text-xl hover:border-black border-2 border-white"
-                (click)="navigateService.scrollToComponent('app-home')" aria-label="Accéder à la page d'accueil">
+            <a routerLink="/" aria-label="Accéder à la page d'accueil" class="hover:text-black hover:bg-white text-black bg-white p-2 rounded-full text-xl hover:border-black border-2 border-white">
                 AG
             </a>
 
@@ -18,21 +16,21 @@
         </div>
 
         <div class="hidden lg:flex items-center p-4 justify-center flex-grow">
-            <a class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
+            <a routerLink="/realisations" class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
                 (click)="navigateService.scrollToComponent('app-realisations')" aria-label="Accéder aux réalisations">Réalisations</a>
             <span class="mx-2">|</span>
 
-            <a class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
+            <a  routerLink="/experiences" class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
                 (click)="navigateService.scrollToComponent('app-experiences')" aria-label="Accéder aux expériences professionnelles">Expériences Professionnelles</a>
             <span class="mx-2">|</span>
 
-            <a class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
+            <a  routerLink="/diplomes"class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
                 (click)="navigateService.scrollToComponent('app-diplomes')" aria-label="Accéder aux diplômes et formation">Diplômes et Formation</a>
             <span class="mx-2">|</span>
 
-            <a class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
+            <a routerLink="/contact" class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
                 (click)="navigateService.scrollToComponent('app-contact')" aria-label="Accéder à la section contact">Contact</a>
-        </div>
+        </div> 
 
         <!-- Bouton pour le menu mobile -->
         <button (click)="toggleMenu()" class="lg:hidden z-50" aria-label="Ouvrir le menu">
@@ -47,26 +45,27 @@
                 </svg>
             </div>
         </button>
-    </div>
+    </div> 
 
     <!-- Menu mobile -->
+
     <div id="mobileMenu" [ngClass]="{'hidden': !isMenuOpen, 'block': isMenuOpen}"
         class="absolute w-full h-screen z-10 lg:hidden text-3xl bg-gray-50 top-0 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-md shadow-md dark:bg-gray-900 dark:text-white text-center">
         <div class="p-4 flex flex-col items-center justify-center h-full space-y-4">
-            <a class="block py-2 cursor-pointer"
+            <a routerLink="realisations" class="block py-2 cursor-pointer"
                 (click)="navigateService.scrollToComponent('app-realisations'); closeMenu()" aria-label="Accéder aux réalisations">Réalisations</a>
             <span>-^-</span>
 
-            <a class="block py-2 cursor-pointer"
+            <a routerLink="experiences" class="block py-2 cursor-pointer"
                 (click)="navigateService.scrollToComponent('app-experiences'); closeMenu()" aria-label="Accéder aux expériences professionnelles">Expériences Professionnelles</a>
             <span>-^-</span>
 
-            <a class="block py-2 cursor-pointer"
+            <a routerLink="diplomes" class="block py-2 cursor-pointer"
                 (click)="navigateService.scrollToComponent('app-diplomes'); closeMenu()" aria-label="Accéder aux diplômes et formation">Diplômes et Formation</a>
             <span>-^-</span>
 
-            <a class="block py-2 cursor-pointer"
+            <a routerLink="contact" class="block py-2 cursor-pointer"
                 (click)="navigateService.scrollToComponent('app-contact'); closeMenu()" aria-label="Accéder à la section contact">Contact</a>
         </div>
     </div>
-</nav>
+</nav> 

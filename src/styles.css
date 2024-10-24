@@ -16,18 +16,6 @@ body {
     /* Assurez-vous que cela correspond à votre design */
 }
 
-/* Masque la barre de défilement */
-.hide-scrollbar::-webkit-scrollbar {
-    display: none;
-    /* Pour Chrome, Safari et Opera */
-}
-
-.hide-scrollbar {
-    -ms-overflow-style: none;
-    /* Pour Internet Explorer et Edge */
-    scrollbar-width: none;
-    /* Pour Firefox */
-}
 
 @keyframes fadeIn {
     0% {

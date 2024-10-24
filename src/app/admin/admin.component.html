@@ -1,1 +1,145 @@
-<p>admin works!</p>
+<div class="
+flex 
+  flex-col 
+  items-center 
+  justify-center 
+  min-h-screen">
+    <button (click)="logout()" class="bg-black text-white rounded-full p-2 justify-end">
+        Se déconnecter
+    </button>
+    <h2 class=" text-3xl
+    text-center 
+    font-bold 
+    text-black 
+    dark:text-gray-50 
+    px-4">Bienvenue sur la page Admin</h2>
+
+    <div class="grid grid-cols-5 space-x-4 ">
+
+
+        <form [formGroup]="articleForm" (ngSubmit)="addArticle()" class="border space-y-4 flex flex-col">
+            <h3 class="text-center text-xl font-bold">Ajouter une expérience professionnelle</h3>
+            
+            <div class="flex justify-between items-center">
+                <label class="mr-4 w-32 text-left" for="entreprise">Entreprise :</label>
+                <input class="w-full rounded text-left dark:text-black" id="entreprise" formControlName="entreprise">
+            </div>
+        
+            <div class="flex justify-between items-center">
+                <label class="mr-4 w-32 text-left" for="poste">Poste :</label>
+                <input class="w-full rounded text-left dark:text-black" id="poste" formControlName="poste">
+            </div>
+        
+            <div class="flex justify-between items-center">
+                <label class="mr-4 w-32 text-left" for="dateDebut">Date de début :</label>
+                <input class="w-full rounded text-left dark:text-black" id="dateDebut" type="date" formControlName="dateDebut">
+            </div>
+        
+            <div class="flex justify-between items-center">
+                <label class="mr-4 w-32 text-left" for="dateFin">Date de fin :</label>
+                <input class="w-full rounded text-left dark:text-black" id="dateFin" type="date" formControlName="dateFin">
+            </div>
+        
+            <div>
+                <label class="mr-4 w-32 text-left" for="missions">Missions :</label>
+                <textarea id="missions" formControlName="missions" placeholder="Séparez les missions par des virgules"></textarea>
+            </div>
+        
+            <div class="flex justify-between items-center">
+                <label class="mr-4 w-32 text-left" for="logo">Logo :</label>
+                <input class="w-full rounded text-left dark:text-black" id="logo" formControlName="logo">
+            </div>
+        
+            <div class="flex justify-between items-center">
+                <label class="mr-4 w-32 text-left" for="lieu">Lieu :</label>
+                <input class="w-full rounded text-left dark:text-black" id="lieu" formControlName="lieu">
+            </div>
+        
+            <div class="flex justify-between items-center">
+                <label class="mr-4 w-32 text-left" for="siteWeb">Site Web :</label>
+                <input class="w-full rounded text-left dark:text-black" id="siteWeb" formControlName="siteWeb">
+            </div>
+        
+            <button
+                class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border border-blue-500 dark:border-blue-700 transform transition-transform duration-300 ease-in-out hover:scale-105"
+                type="submit" [disabled]="articleForm.invalid">
+                Ajouter
+            </button>
+        </form>
+        
+
+        <form [formGroup]="articleForm" (ngSubmit)="addArticle()" class="border space-y-4 flex flex-col">
+            <h3 class="text-center text-xl font-bold">Ajouter un diplôme</h3>
+            <div class="flex justify-between items-center">
+                <label class="mr-4 w-32 text-left" for="title">Titre :</label>
+                <input class="w-full rounded text-left dark:text-black" id="title" formControlName="title">
+            </div>
+
+            <div>
+                <label class="mr-4 w-32 text-left" for="content">Contenu :</label>
+                <textarea id="content" formControlName="content"></textarea>
+            </div>
+
+            <div>
+                <label class="mr-4 w-32 text-left" for="date">Date :</label>
+                <input class="w-full rounded text-left dark:text-black" id="date" type="date" formControlName="date">
+            </div>
+
+            <button
+                class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border border-blue-500 dark:border-blue-700 transform transition-transform duration-300 ease-in-out hover:scale-105 "
+                type="submit" [disabled]="articleForm.invalid">
+                Ajouter</button>
+        </form>
+
+        <form [formGroup]="articleForm" (ngSubmit)="addArticle()" class="border space-y-4 flex flex-col">
+            <h3 class="text-center text-xl font-bold">Ajouter une réalisation</h3>
+            <div class="flex justify-between items-center">
+                <label class="mr-4 w-32 text-left" for="title">Titre :</label>
+                <input class="w-full rounded text-left dark:text-black" id="title" formControlName="title">
+            </div>
+
+            <div>
+                <label class="mr-4 w-32 text-left" for="content">Contenu :</label>
+                <textarea id="content" formControlName="content"></textarea>
+            </div>
+
+            <div>
+                <label class="mr-4 w-32 text-left" for="date">Date :</label>
+                <input class="w-full rounded text-left dark:text-black" id="date" type="date" formControlName="date">
+            </div>
+
+            <button
+                class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border border-blue-500 dark:border-blue-700 transform transition-transform duration-300 ease-in-out hover:scale-105 "
+                type="submit" [disabled]="articleForm.invalid">
+                Ajouter</button>
+        </form>
+
+        
+        <!-- Formulaire pour ajouter/modifier une expérience -->
+        <form [formGroup]="articleForm" (ngSubmit)="addArticle()">
+            <label>Entreprise:</label>
+            <input formControlName="entreprise" />
+            
+            <!-- Autres champs... -->
+            
+            <label>Missions (séparées par des virgules):</label>
+            <input formControlName="missions" />
+            
+            <button type="submit">{{ editingExperienceId ? 'Modifier' : 'Ajouter' }} l'expérience</button>
+        </form>
+        
+        <!-- Liste des expériences -->
+         <div>
+
+             <h3>Liste des expériences</h3>
+             <ul>
+                 <li *ngFor="let experience of experiences">
+                     <strong>{{ experience.poste }}</strong> à {{ experience.entreprise }} <br />
+                     <button (click)="editExperience(experience)">Éditer</button>
+                     <button (click)="deleteExperience(experience.id)">Supprimer</button>
+                    </li>
+                </ul>
+            </div>
+</div>
+
+</div>

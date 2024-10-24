@@ -1,9 +1,10 @@
-<div class="flex flex-col items-center"> <!-- Centrer les éléments avec items-center -->
+<div class=" my-24 lg:my-32  flex flex-col items-center"> <!-- Centrer les éléments avec items-center -->
 
   <div class="text-center">
     <img src="./assets/avatar.png" alt="Photo de profil d'Aurélien Guelle" class="w-40 h-40 rounded-full mx-auto"> <!-- Image centrée et alt amélioré -->
   </div>
 
+  
   <h2 class="text-3xl text-center font-bold text-black dark:text-gray-50">Bienvenue</h2>
   <span class="animate-shake text-3xl text-center">👋🏻</span>
 
@@ -11,12 +12,14 @@
 
   <!-- Premier bouton (Contact) -->
   <div class="flex justify-center mb-4"> <!-- Ajout d'une marge inférieure -->
-    <a (click)="navigateService.scrollToComponent('app-contact')" href="javascript:void(0);"
+    <a routerLink="/contact" aria-label="Aller à la section contact"
       class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border border-blue-500 dark:border-blue-700 transform transition-transform duration-300 ease-in-out hover:scale-105"
-      aria-label="Aller à la section contact">
+      >
       Contactez-moi
     </a>
   </div>
+
+
 
   <div class="text-center py-10">
     <p class="text-lg text-gray-700 dark:text-gray-50 px-5"> <!-- Ajustement de px -->

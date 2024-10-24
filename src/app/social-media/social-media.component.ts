@@ -3,6 +3,7 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { faTwitter, faDiscord } from '@fortawesome/free-brands-svg-icons'; // Importer uniquement les icônes nécessaires
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-social-media',
@@ -13,6 +14,6 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 })
 export class SocialMediaComponent {
   constructor(library: FaIconLibrary) {
-    library.addIcons(faTwitter, faDiscord, faGithub, faLinkedin); // Ajouter uniquement les icônes spécifiques
+    library.addIcons(faTwitter, faDiscord, faGithub, faLinkedin, faPhone, faEnvelope); // Ajouter uniquement les icônes spécifiques
   }
 }

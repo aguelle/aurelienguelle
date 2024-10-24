@@ -1,17 +1,20 @@
-import { NgClass, NgIf } from '@angular/common';
+import { CommonModule, NgClass, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { HomeComponent } from "../home/home.component";
-import { DiplomesComponent } from "../diplomes/diplomes.component";
-import { RealisationsComponent } from "../realisations/realisations.component";
-import { ExperiencesComponent } from "../experiences/experiences.component";
-import { ContactComponent } from "../contact/contact.component";
+
 import { NavigateService } from '../navigate.service';
 import { ThemeService } from '../theme.service';
+import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [NgIf, NgClass, HomeComponent, DiplomesComponent, RealisationsComponent, ExperiencesComponent, ContactComponent],
+  imports: [
+    CommonModule,
+    NgIf,
+     NgClass,
+       RouterLink,
+    RouterLinkActive,
+  RouterModule    ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })

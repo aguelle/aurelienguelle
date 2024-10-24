@@ -1,13 +1,14 @@
 <div class="bg-gray-50 dark:text-gray-50 dark:bg-gray-900 flex flex-col lg:h-screen ">
-    <app-menu (click)="navigateService.scrollToComponent('home')"></app-menu>
-    
-    <div class="flex flex-col lg:flex-row flex-grow lg:overflow-hidden">
+<app-menu></app-menu>
+
+    <router-outlet></router-outlet>
+    <!-- <div class="flex flex-col lg:flex-row flex-grow lg:overflow-hidden">
         <app-home class="w-full flex-shrink-0 flex justify-center h-full dark:bg-gray-800 bg-gray-50 py-24 lg:py-40"></app-home>
         <app-realisations class="w-full flex-shrink-0 flex justify-center h-full dark:bg-gray-800 py-10 lg:py-40"></app-realisations>
         <app-experiences class="w-full flex-shrink-0 flex justify-center h-full dark:bg-gray-800 bg-gray-50 py-10 lg:py-40"></app-experiences>
         <app-diplomes class="w-full flex-shrink-0 flex justify-center h-full dark:bg-gray-800 py-10 lg:py-40"></app-diplomes>
         <app-contact class="w-full flex-shrink-0 flex justify-center h-full dark:bg-gray-800 bg-gray-50 py-10 lg:py-40"></app-contact>
-    </div>
+    </div> -->
 
-    <app-footer class="dark:bg-gray-950"></app-footer>
-</div>
+    <app-footer ></app-footer>
+ </div> 
