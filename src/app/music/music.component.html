@@ -1,0 +1,17 @@
+<section class="music-section py-10 bg-gray-100">
+    <h2 class="text-3xl font-bold text-center mb-6">Ma Bibliothèque Musicale</h2>
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div *ngFor="let track of tracks" class="music-item p-6 bg-white shadow-md rounded-lg">
+        <h3 class="text-xl font-semibold mb-3">{{ track.title }} - {{ track.artist }}</h3>
+        <audio controls class="w-full">
+          <source [src]="track.url" type="audio/mpeg">
+          Votre navigateur ne supporte pas l'élément audio.
+        </audio>
+      </div>
+    </div>
+  
+    <!-- Bouton retour vers la page principale -->
+    <a routerLink="/" class="text-white bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded mt-8 block text-center">
+      Revenir à la page principale
+    </a>
+  </section>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 import { MenuComponent } from "./menu/menu.component";
 import { FooterComponent } from "./footer/footer.component";
 
@@ -24,7 +24,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-
-  // constructor(public navigateService: NavigateService) {}
   title = 'aguelle';
+  isMusicPage: boolean = false;
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Vérifiez si l'URL contient "musique"
+        this.isMusicPage = event.urlAfterRedirects.includes('/musique');
+      }
+    });
+  }
+  // constructor(public navigateService: NavigateService) {}
 }

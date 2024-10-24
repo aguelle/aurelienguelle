@@ -1,5 +1,5 @@
 <div class="bg-gray-50 dark:text-gray-50 dark:bg-gray-900 flex flex-col lg:h-screen ">
-<app-menu></app-menu>
+<app-menu *ngIf="!isMusicPage"></app-menu>
 
     <router-outlet></router-outlet>
     <!-- <div class="flex flex-col lg:flex-row flex-grow lg:overflow-hidden">
@@ -10,5 +10,5 @@
         <app-contact class="w-full flex-shrink-0 flex justify-center h-full dark:bg-gray-800 bg-gray-50 py-10 lg:py-40"></app-contact>
     </div> -->
 
-    <app-footer ></app-footer>
+    <app-footer *ngIf="!isMusicPage"></app-footer>
  </div> 

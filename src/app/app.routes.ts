@@ -7,6 +7,7 @@ import { DiplomesComponent } from './diplomes/diplomes.component';
 import { RealisationsComponent } from './realisations/realisations.component';
 import { authGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
+import { MusicComponent } from './music/music.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -14,6 +15,9 @@ export const routes: Routes = [
     { path: 'diplomes', component: DiplomesComponent },
     { path: 'realisations', component: RealisationsComponent},
     { path: 'contact', component: ContactComponent },
+    { path: 'musique', component: MusicComponent }, // Route vers la section musique
     { path: 'login', component: LoginComponent },
     { path: 'admin', component: AdminComponent, canActivate: [authGuard]},
+    { path: '**', redirectTo: '' } // Redirection par défaut
+
 ];

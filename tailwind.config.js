@@ -6,7 +6,11 @@ module.exports = {
   darkMode: 'class',
 
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        fluoYellow: '#ccff00',  // Exemple d'une couleur jaune fluo
+      },
+    },
   },
   plugins: [],
 }
