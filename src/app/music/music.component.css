@@ -1,0 +1,27 @@
+.bg-custom {
+    background-image: url('/assets/BG5.jpg');
+    background-size: cover;
+    background-position: center;
+        background-blend-mode: multiply;
+
+  }
+  .active {
+    background-color: #333;
+    border-left: 4px solid #ccff00; /* Met un indicateur de piste en lecture */
+  }
+
+  .playlist {
+    position: relative;
+  }
+  
+  .track-item {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .progress-border {
+    background-color: #ccff00; /* Couleur de la bordure */
+    border-radius: 8px; /* Ajustez pour arrondir la bordure */
+    height: 4px; /* Épaisseur de la "bordure" */
+    bottom: 0;
+  }
