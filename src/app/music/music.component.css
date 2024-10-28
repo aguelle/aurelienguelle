@@ -7,7 +7,7 @@
   }
   .active {
     background-color: #333;
-    border-left: 4px solid #ccff00; /* Met un indicateur de piste en lecture */
+    border-left: 1px solid #ccff00; /* Met un indicateur de piste en lecture */
   }
 
   .playlist {
@@ -21,7 +21,5 @@
   
   .progress-border {
     background-color: #ccff00; /* Couleur de la bordure */
-    border-radius: 8px; /* Ajustez pour arrondir la bordure */
-    height: 4px; /* Épaisseur de la "bordure" */
-    bottom: 0;
+    height: 1px; /* Épaisseur de la "bordure" */
   }

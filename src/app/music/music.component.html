@@ -25,17 +25,17 @@
     <!-- Playlist des morceaux -->
     <div class="playlist grid grid-cols-1 gap-4">
       <div *ngFor="let track of tracks"
-           class="track-item w-full p-1 bg-gray-800 rounded-lg flex items-center gap-4 hover:bg-gray-700 cursor-pointer relative"
+           class="track-item w-full p-1 bg-gray-800  flex items-center gap-4 hover:bg-gray-700 cursor-pointer relative"
            [class.active]="track === currentTrack"
            (click)="playTrack(track)">
            
         <!-- Pseudo-élément pour la bordure de progression -->
-        <div class="progress-border absolute inset-0 rounded-lg pointer-events-none"
+        <div class="progress-border absolute inset-0  pointer-events-none"
              [style.width]="track === currentTrack ? trackProgress + '%' : '0%'">
         </div>
     
         <!-- Icône et texte de la piste -->
-        <i [class]="track === currentTrack ? 'fas fa-volume-up text-fluoYellow' : 'fas fa-music'"></i>
+        <i [class]="track === currentTrack ? 'fas fa-volume-up text-fluoYellow ' : 'fas fa-music'"></i>
         <h4 class="text-lg font-semibold flex-1">{{ track.title }} - {{ track.artist }}</h4>
       </div>
     </div>
