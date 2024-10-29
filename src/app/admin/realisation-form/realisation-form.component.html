@@ -1,0 +1,24 @@
+<!-- realisation-form.component.html -->
+<div class="border p-4 bg-gray-50">
+    <form [formGroup]="realisationForm" (ngSubmit)="addRealisation()" class="border space-y-4 flex flex-col">
+        <h3 class="text-center text-xl font-bold">Ajouter une réalisation</h3>
+        <div class="flex justify-between items-center">
+            <label class="mr-4 w-32 text-left" for="nom">Titre :</label>
+            <input class="w-full rounded text-left dark:text-black" id="nom" formControlName="nom">
+        </div>
+        <div>
+            <label class="mr-4 w-32 text-left" for="description">Contenu :</label>
+            <textarea id="description" formControlName="description"></textarea>
+        </div>
+        <div>
+            <label class="mr-4 w-32 text-left" for="date">Date :</label>
+            <input class="w-full rounded text-left dark:text-black" id="date" type="date" formControlName="date">
+        </div>
+        <button type="submit" [disabled]="realisationForm.invalid" class="btn">
+            Ajouter Réalisation
+        </button>
+    </form>
+</div>
+
+
+

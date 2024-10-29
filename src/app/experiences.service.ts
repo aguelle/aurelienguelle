@@ -3,7 +3,8 @@ import { Firestore, collection, collectionData, doc, docData, deleteDoc, updateD
 import { Observable } from 'rxjs';
 
 export interface Experience {
-  entreprise:string;
+  id?: string; // ID optionnel
+  entreprise: string;
   poste: string;
   dateDebut: string;
   dateFin?: string;
@@ -20,22 +21,23 @@ export class ExperiencesService {
 
   constructor(private firestore: Firestore) {}
 
-  getExperiences(): Observable<any[]> {
+  getExperiences(): Observable<Experience[]> {
     const experiencesCollection = collection(this.firestore, 'experiences');
-    return collectionData(experiencesCollection, { idField: 'id' }) as Observable<any[]>;
-  }
-  getExperienceById(id: string): Observable<Experience> {
-    const experienceDoc = doc(this.firestore, `experiences/${id}`);
-    return docData(experienceDoc) as Observable<Experience>;
+    return collectionData(experiencesCollection, { idField: 'id' }) as Observable<Experience[]>;
   }
 
-  // Méthode pour supprimer une expérience
+  getExperienceById(id: string): Observable<Experience | undefined> {
+    const experienceDoc = doc(this.firestore, `experiences/${id}`);
+    return docData(experienceDoc, { idField: 'id' }) as Observable<Experience | undefined>;
+  }
+
   deleteExperience(id: string): Promise<void> {
     const experienceDoc = doc(this.firestore, `experiences/${id}`);
     return deleteDoc(experienceDoc);
   }
+
   updateExperience(id: string, experience: Experience): Promise<void> {
     const experienceDoc = doc(this.firestore, `experiences/${id}`);
-    return updateDoc(experienceDoc, { ...experience }); // Utilisation de updateDoc pour mettre à jour
+    return updateDoc(experienceDoc, { ...experience });
   }
 }

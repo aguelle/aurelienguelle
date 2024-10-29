@@ -7,17 +7,36 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ExperiencesService, Experience } from '../experiences.service'; // Assurez-vous que le chemin est correct
 import { CommonModule } from '@angular/common';
 import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
+import { ExperienceFormComponent } from "./experience-form/experience-form.component";
+import { RealisationFormComponent } from "./realisation-form/realisation-form.component";
+import { MusicFormComponent } from "./music-form/music-form.component";
 
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, ExperienceFormComponent, RealisationFormComponent, MusicFormComponent],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
 
 export class AdminComponent implements OnInit {
+
+  onExperienceAdded() {
+    alert('Expérience ajoutée avec succès');
+    // Rafraîchir la liste des expériences si nécessaire
+  }
+
+  onRealisationAdded() {
+    alert('Réalisation ajoutée avec succès');
+    // Rafraîchir la liste des réalisations si nécessaire
+  }
+
+  onMusicAdded() {
+    alert('Morceau ajouté avec succès');
+    // Rafraîchir la liste des morceaux si nécessaire
+  }
+
   articleForm: FormGroup;
   experiences: any[] = [];
   editingExperienceId: string | null = null;
@@ -106,52 +125,6 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  async addTrack() {
-    if (this.trackForm.invalid) {
-      alert('Veuillez remplir tous les champs obligatoires.');
-      return;
-    }
-
-    const trackData = this.trackForm.value;
-
-    try {
-      if (this.selectedAlbumArt) {
-        const albumArtRef = ref(this.storage, `albumArt/${Date.now()}_${this.selectedAlbumArt.name}`);
-        const albumArtSnapshot = await uploadBytes(albumArtRef, this.selectedAlbumArt);
-        trackData.albumArt = await getDownloadURL(albumArtSnapshot.ref);
-      }
-
-      if (this.selectedMp3) {
-        const mp3Ref = ref(this.storage, `tracks/${Date.now()}_${this.selectedMp3.name}`);
-        const mp3Snapshot = await uploadBytes(mp3Ref, this.selectedMp3);
-        trackData.url = await getDownloadURL(mp3Snapshot.ref);
-      }
-
-      const tracksRef = collection(this.firestore, 'tracks');
-      await addDoc(tracksRef, trackData);
-      alert('Morceau ajouté avec succès');
-
-      this.trackForm.reset();
-      this.selectedAlbumArt = null;
-      this.selectedMp3 = null;
-
-    } catch (error) {
-      console.error('Erreur lors de l\'ajout du morceau: ', error);
-      alert('Erreur lors de l\'ajout du morceau. Veuillez réessayer.');
-    }
-  }
-
-  onFileSelected(event: Event, type: 'albumArt' | 'url') {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
-      const file = input.files[0];
-      if (type === 'albumArt') {
-        this.selectedAlbumArt = file;
-      } else if (type === 'url') {
-        this.selectedMp3 = file;
-      }
-    }
-  }
 
   logout() {
     signOut(this.auth)

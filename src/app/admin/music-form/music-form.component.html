@@ -1,0 +1,34 @@
+<div class="border p-4 bg-gray-50">
+
+    <form [formGroup]="trackForm" (ngSubmit)="addTrack()" class="border space-y-4 flex flex-col">
+        <h3 class="text-center text-xl font-bold">Ajouter un morceau</h3>
+
+        <div class="flex justify-between items-center">
+            <label class="mr-4 w-32 text-left" for="artist">Artiste :</label>
+            <input class="w-full rounded text-left dark:text-black" id="artist" formControlName="artist">
+        </div>
+
+        <div class="flex justify-between items-center">
+            <label class="mr-4 w-32 text-left" for="title">Titre :</label>
+            <input class="w-full rounded text-left dark:text-black" id="title" formControlName="title">
+        </div>
+
+        <div class="flex justify-between items-center">
+            <label class="mr-4 w-32 text-left" for="albumArt">Visuel (JPEG) :</label>
+            <input type="file" accept="image/jpeg" (change)="onFileSelected($event, 'albumArt')"
+                class="w-full rounded dark:text-black" />
+        </div>
+
+        <div class="flex justify-between items-center">
+            <label class="mr-4 w-32 text-left" for="url">Fichier MP3 :</label>
+            <input type="file" accept="audio" (change)="onFileSelected($event, 'url')"
+                class="w-full rounded dark:text-black" />
+        </div>
+
+        <button
+            class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg"
+            type="submit" [disabled]="trackForm.invalid">
+            Ajouter
+        </button>
+    </form>
+</div>

@@ -3,8 +3,8 @@ flex
   flex-col 
   items-center 
   justify-center 
-  min-h-screen my-28">
-    <button (click)="logout()" class="bg-black text-white text-xs mx-2 self-end rounded-full p-2 ">
+  min-h-screen bg-gray-50 my-28">
+    <button (click)="logout()" class="bg-black text-white text-xs mx-2 my-4 self-end rounded-full p-2 ">
         Se déconnecter
     </button>
     <h2 class=" text-3xl
@@ -13,168 +13,9 @@ flex
     text-black 
     dark:text-gray-50 
     px-4 py-4 uppercase">Bienvenue sur la page Admin</h2>
-
     <div class="grid grid-cols-1 gap-6">
-        <div class="border p-4">
-            <form [formGroup]="articleForm" (ngSubmit)="addArticle()" class="border space-y-4 flex flex-col">
-                <h3 class="text-center text-xl font-bold">Ajouter une expérience professionnelle</h3>
-
-                <div class="flex justify-between items-center">
-                    <label class="mr-4 w-32 text-left" for="entreprise">Entreprise :</label>
-                    <input class="w-full rounded text-left dark:text-black" id="entreprise"
-                        formControlName="entreprise">
-                </div>
-
-                <div class="flex justify-between items-center">
-                    <label class="mr-4 w-32 text-left" for="poste">Poste :</label>
-                    <input class="w-full rounded text-left dark:text-black" id="poste" formControlName="poste">
-                </div>
-
-                <div class="flex justify-between items-center">
-                    <label class="mr-4 w-32 text-left" for="dateDebut">Date de début :</label>
-                    <input class="w-full rounded text-left dark:text-black" id="dateDebut" type="date"
-                        formControlName="dateDebut">
-                </div>
-
-                <div class="flex justify-between items-center">
-                    <label class="mr-4 w-32 text-left" for="dateFin">Date de fin :</label>
-                    <input class="w-full rounded text-left dark:text-black" id="dateFin" type="date"
-                        formControlName="dateFin">
-                </div>
-
-                <div>
-                    <label class="mr-4 w-32 text-left" for="missions">Missions :</label>
-                    <textarea id="missions" formControlName="missions"
-                        placeholder="Séparez les missions par des virgules"></textarea>
-                </div>
-
-                <div class="flex justify-between items-center">
-                    <label class="mr-4 w-32 text-left" for="logo">Logo :</label>
-                    <input class="w-full rounded text-left dark:text-black" id="logo" formControlName="logo">
-                </div>
-
-                <div class="flex justify-between items-center">
-                    <label class="mr-4 w-32 text-left" for="lieu">Lieu :</label>
-                    <input class="w-full rounded text-left dark:text-black" id="lieu" formControlName="lieu">
-                </div>
-
-                <div class="flex justify-between items-center">
-                    <label class="mr-4 w-32 text-left" for="siteWeb">Site Web :</label>
-                    <input class="w-full rounded text-left dark:text-black" id="siteWeb" formControlName="siteWeb">
-                </div>
-
-                <button
-                    class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border border-blue-500 dark:border-blue-700 transform transition-transform duration-300 ease-in-out hover:scale-105"
-                    type="submit" [disabled]="articleForm.invalid">
-                    Ajouter
-                </button>
-            </form>
-        </div>
-
-        <div class="border p-4">
-            <form [formGroup]="articleForm" (ngSubmit)="addArticle()" class="border space-y-4 flex flex-col">
-                <h3 class="text-center text-xl font-bold">Ajouter un diplôme</h3>
-                <div class="flex justify-between items-center">
-                    <label class="mr-4 w-32 text-left" for="title">Titre :</label>
-                    <input class="w-full rounded text-left dark:text-black" id="title" formControlName="title">
-                </div>
-                <div>
-                    <label class="mr-4 w-32 text-left" for="content">Contenu :</label>
-                    <textarea id="content" formControlName="content"></textarea>
-                </div>
-                <div>
-                    <label class="mr-4 w-32 text-left" for="date">Date :</label>
-                    <input class="w-full rounded text-left dark:text-black" id="date" type="date"
-                        formControlName="date">
-                </div>
-                <button
-                    class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border border-blue-500 dark:border-blue-700 transform transition-transform duration-300 ease-in-out hover:scale-105 "
-                    type="submit" [disabled]="articleForm.invalid">
-                    Ajouter</button>
-            </form>
-        </div>
-        <div class="border p-4">
-            <form [formGroup]="articleForm" (ngSubmit)="addArticle()" class="border space-y-4 flex flex-col">
-                <h3 class="text-center text-xl font-bold">Ajouter une réalisation</h3>
-                <div class="flex justify-between items-center">
-                    <label class="mr-4 w-32 text-left" for="title">Titre :</label>
-                    <input class="w-full rounded text-left dark:text-black" id="title" formControlName="title">
-                </div>
-                <div>
-                    <label class="mr-4 w-32 text-left" for="content">Contenu :</label>
-                    <textarea id="content" formControlName="content"></textarea>
-                </div>
-                <div>
-                    <label class="mr-4 w-32 text-left" for="date">Date :</label>
-                    <input class="w-full rounded text-left dark:text-black" id="date" type="date"
-                        formControlName="date">
-                </div>
-                <button
-                    class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border border-blue-500 dark:border-blue-700 transform transition-transform duration-300 ease-in-out hover:scale-105 "
-                    type="submit" [disabled]="articleForm.invalid">
-                    Ajouter</button>
-            </form>
-        </div>
-
-        <div class="border p-4">
-            <!-- Formulaire pour ajouter/modifier une expérience -->
-            <form [formGroup]="articleForm" (ngSubmit)="addArticle()">
-                <label>Entreprise:</label>
-                <input formControlName="entreprise" />
-                <!-- Autres champs... -->
-                <label>Missions (séparées par des virgules):</label>
-                <input formControlName="missions" />
-                <button type="submit">{{ editingExperienceId ? 'Modifier' : 'Ajouter' }} l'expérience</button>
-            </form>
-
-            <!-- Liste des expériences -->
-        </div>
-
-        <div class="border p-4">
-
-            <h3>Liste des expériences</h3>
-            <ul>
-                <li *ngFor="let experience of experiences">
-                    <strong>{{ experience.poste }}</strong> à {{ experience.entreprise }} <br />
-                    <button (click)="editExperience(experience)">Éditer</button>
-                    <button (click)="deleteExperience(experience.id)">Supprimer</button>
-                </li>
-            </ul>
-        </div>
-
-        <div class="border p-4">
-
-            <form [formGroup]="trackForm" (ngSubmit)="addTrack()" class="border space-y-4 flex flex-col">
-                <h3 class="text-center text-xl font-bold">Ajouter un morceau</h3>
-
-                <div class="flex justify-between items-center">
-                    <label class="mr-4 w-32 text-left" for="artist">Artiste :</label>
-                    <input class="w-full rounded text-left dark:text-black" id="artist" formControlName="artist">
-                </div>
-
-                <div class="flex justify-between items-center">
-                    <label class="mr-4 w-32 text-left" for="title">Titre :</label>
-                    <input class="w-full rounded text-left dark:text-black" id="title" formControlName="title">
-                </div>
-
-                <div class="flex justify-between items-center">
-                    <label class="mr-4 w-32 text-left" for="albumArt">Visuel (JPEG) :</label>
-                    <input type="file" accept="image/jpeg" (change)="onFileSelected($event, 'albumArt')"
-                        class="w-full rounded dark:text-black" />
-                </div>
-
-                <div class="flex justify-between items-center">
-                    <label class="mr-4 w-32 text-left" for="url">Fichier MP3 :</label>
-                    <input type="file" accept="audio" (change)="onFileSelected($event, 'url')"
-                        class="w-full rounded dark:text-black" />
-                </div>
-
-                <button
-                    class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg"
-                    type="submit" [disabled]="trackForm.invalid">
-                    Ajouter
-                </button>
-            </form>
-        </div>
+        <app-experience-form (experienceAdded)="onExperienceAdded()"></app-experience-form>
+        <app-realisation-form (realisationAdded)="onRealisationAdded()"></app-realisation-form>
+        <app-music-form (musicAdded)="onMusicAdded()"></app-music-form>
 
     </div>
