@@ -1,21 +1,32 @@
-<!-- realisation-form.component.html -->
 <div class="border p-4 bg-gray-50">
+    <h3 class="font-bold">Liste des réalisations</h3>
+    <ul>
+        <li *ngFor="let realisation of realisations" class="flex flex-row space-x-2">
+            <span>{{ realisation.nom }}</span>
+            <div class="space-x-1">
+                <button class="font-bold text-blue-600 hover:underline" (click)="editRealisation(realisation)" aria-label="Éditer cette expérience">Éditer</button>
+                <button class="font-bold text-red-600 hover:underline" (click)="deleteRealisation(realisation.id)" *ngIf="realisation.id">Supprimer</button>
+            </div>
+   </li>
+    </ul>
+
     <form [formGroup]="realisationForm" (ngSubmit)="addRealisation()" class="border space-y-4 flex flex-col">
         <h3 class="text-center text-xl font-bold">Ajouter une réalisation</h3>
         <div class="flex justify-between items-center">
-            <label class="mr-4 w-32 text-left" for="nom">Titre :</label>
-            <input class="w-full rounded text-left dark:text-black" id="nom" formControlName="nom">
+            <label class="mr-4 w-32 text-left">Titre :</label>
+            <input class="w-full rounded text-left dark:text-black" formControlName="nom">
         </div>
         <div>
-            <label class="mr-4 w-32 text-left" for="description">Contenu :</label>
-            <textarea id="description" formControlName="description"></textarea>
+            <label class="mr-4 w-32 text-left" >Contenu :</label>
+            <textarea  formControlName="description"></textarea>
         </div>
         <div>
-            <label class="mr-4 w-32 text-left" for="date">Date :</label>
-            <input class="w-full rounded text-left dark:text-black" id="date" type="date" formControlName="date">
+            <label class="mr-4 w-32 text-left" >Date :</label>
+            <input class="w-full rounded text-left dark:text-black" type="date" formControlName="date">
         </div>
-        <button type="submit" [disabled]="realisationForm.invalid" class="btn">
-            Ajouter Réalisation
+        <button 
+        class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border border-blue-500 dark:border-blue-700 transform transition-transform duration-300 ease-in-out hover:scale-105"
+        type="submit"> {{ editingRealisationId ? 'Modifier' : 'Ajouter' }} la réalisation
         </button>
     </form>
 </div>
