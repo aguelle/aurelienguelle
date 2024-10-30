@@ -1,14 +1,7 @@
 <div class="bg-gray-50 dark:text-gray-50 dark:bg-gray-900 flex flex-col lg:h-screen ">
-<app-menu *ngIf="!isMusicPage"></app-menu>
+<app-menu *ngIf="!isMusicPage && !isAdminPage"></app-menu>
 
     <router-outlet></router-outlet>
-    <!-- <div class="flex flex-col lg:flex-row flex-grow lg:overflow-hidden">
-        <app-home class="w-full flex-shrink-0 flex justify-center h-full dark:bg-gray-800 bg-gray-50 py-24 lg:py-40"></app-home>
-        <app-realisations class="w-full flex-shrink-0 flex justify-center h-full dark:bg-gray-800 py-10 lg:py-40"></app-realisations>
-        <app-experiences class="w-full flex-shrink-0 flex justify-center h-full dark:bg-gray-800 bg-gray-50 py-10 lg:py-40"></app-experiences>
-        <app-diplomes class="w-full flex-shrink-0 flex justify-center h-full dark:bg-gray-800 py-10 lg:py-40"></app-diplomes>
-        <app-contact class="w-full flex-shrink-0 flex justify-center h-full dark:bg-gray-800 bg-gray-50 py-10 lg:py-40"></app-contact>
-    </div> -->
 
-    <app-footer *ngIf="!isMusicPage"></app-footer>
+    <app-footer *ngIf="!isMusicPage && !isAdminPage"></app-footer>
  </div> 

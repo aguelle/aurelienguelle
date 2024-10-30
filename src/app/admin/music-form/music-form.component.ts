@@ -2,26 +2,32 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
+import { MusicService } from '../../music.service';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-music-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './music-form.component.html',
   styleUrl: './music-form.component.css'
 })
 export class MusicFormComponent {
-  
   @Output() musicAdded = new EventEmitter<void>();
 
   trackForm: FormGroup;
   selectedAlbumArt: File | null = null;
   selectedMp3: File | null = null;
+  tracks$: Observable<any[]> | undefined;
+  editingTrackId: string | null = null;  // ID du morceau en cours d'édition
 
   constructor(
     private fb: FormBuilder,
     private firestore: Firestore,
-    private storage: Storage
+    private storage: Storage,
+    private musicService: MusicService
   ) {
     this.trackForm = this.fb.group({
       artist: ['', Validators.required],
@@ -29,6 +35,14 @@ export class MusicFormComponent {
       albumArt: [''],
       url: [''],
     });
+  }
+
+  ngOnInit() {
+    this.fetchTracks();
+  }
+
+  fetchTracks() {
+    this.tracks$ = this.musicService.getTracks();
   }
 
   async addTrack() {
@@ -52,20 +66,48 @@ export class MusicFormComponent {
         trackData.url = await getDownloadURL(mp3Snapshot.ref);
       }
 
-      const tracksRef = collection(this.firestore, 'tracks');
-      await addDoc(tracksRef, trackData);
-      alert('Morceau ajouté avec succès');
+      if (this.editingTrackId) {
+        // Mise à jour du morceau existant
+        await this.musicService.updateTrack(this.editingTrackId, trackData);
+        alert('Morceau mis à jour avec succès');
+      } else {
+        // Ajout d'un nouveau morceau
+        const tracksRef = collection(this.firestore, 'tracks');
+        await addDoc(tracksRef, trackData);
+        alert('Morceau ajouté avec succès');
+      }
 
-      // Reset du formulaire et des fichiers
-      this.trackForm.reset();
-      this.selectedAlbumArt = null;
-      this.selectedMp3 = null;
-      this.musicAdded.emit();  // Émet un événement pour informer l'ajout réussi
+      this.resetForm();
+      this.musicAdded.emit();
 
     } catch (error) {
-      console.error('Erreur lors de l\'ajout du morceau: ', error);
-      alert('Erreur lors de l\'ajout du morceau. Veuillez réessayer.');
+      console.error('Erreur lors de l\'ajout ou de la mise à jour du morceau: ', error);
+      alert('Erreur lors de l\'ajout ou de la mise à jour du morceau. Veuillez réessayer.');
     }
+  }
+
+  editTrack(track: any) {
+    this.editingTrackId = track.id ?? null; // Assurez-vous que si id est undefined, il devient null
+    this.trackForm.patchValue(track);
+  }
+
+  async deleteTrack(id: string) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer ce morceau ?')) {
+      try {
+        await this.musicService.deleteTrack(id);
+        alert('Morceau supprimé avec succès');
+      } catch (error) {
+        console.error('Erreur lors de la suppression du morceau: ', error);
+        alert('Erreur lors de la suppression du morceau. Veuillez réessayer.');
+      }
+    }
+  }
+
+  private resetForm() {
+    this.trackForm.reset();
+    this.selectedAlbumArt = null;
+    this.selectedMp3 = null;
+    this.editingTrackId = null;  // Réinitialisation de l'ID d'édition
   }
 
   onFileSelected(event: Event, type: 'albumArt' | 'url') {

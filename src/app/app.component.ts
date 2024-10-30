@@ -26,6 +26,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 export class AppComponent {
   title = 'aguelle';
   isMusicPage: boolean = false;
+  isAdminPage: boolean = false;
+
   constructor(private router: Router) {}
 
   ngOnInit() {
@@ -33,6 +35,7 @@ export class AppComponent {
       if (event instanceof NavigationEnd) {
         // Vérifiez si l'URL contient "musique"
         this.isMusicPage = event.urlAfterRedirects.includes('/musique');
+        this.isAdminPage = event.urlAfterRedirects.includes('/admin');
       }
     });
   }

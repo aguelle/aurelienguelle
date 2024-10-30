@@ -24,6 +24,14 @@
             <label class="mr-4 w-32 text-left" >Date :</label>
             <input class="w-full rounded text-left dark:text-black" type="date" formControlName="date">
         </div>
+        <div>
+            <label class="mr-4 w-32 text-left" >Visuel :</label>
+            <input class="w-full rounded text-left dark:text-black" formControlName="visuel">
+        </div>
+        <div>
+            <label class="mr-4 w-32 text-left" >site web :</label>
+            <input class="w-full rounded text-left dark:text-black" formControlName="webSite">
+        </div>
         <button 
         class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border border-blue-500 dark:border-blue-700 transform transition-transform duration-300 ease-in-out hover:scale-105"
         type="submit"> {{ editingRealisationId ? 'Modifier' : 'Ajouter' }} la réalisation

@@ -1,4 +1,16 @@
 <div class="border p-4 bg-gray-50">
+    <h3>Liste des morceaux</h3>
+  <ul>
+    <li *ngFor="let track of (tracks$ | async)" class="flex flex-row space-x-2">
+      {{ track.title }} - {{ track.artist }}
+      <img *ngIf="track.albumArt" [src]="track.albumArt" alt="Album Art" width="50">
+      <div class="space-x-1">
+        <button class="font-bold text-blue-600 hover:underline" (click)="editTrack(track)">Éditer</button>
+        <button class="font-bold text-red-600 hover:underline"(click)="deleteTrack(track.id)">Supprimer</button>
+    </div>
+    </li>
+  </ul>
+
 
     <form [formGroup]="trackForm" (ngSubmit)="addTrack()" class="border space-y-4 flex flex-col">
         <h3 class="text-center text-xl font-bold">Ajouter un morceau</h3>

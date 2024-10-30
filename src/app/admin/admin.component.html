@@ -1,21 +1,35 @@
+<h2 class="text-3xl font-bold text-black dark:text-gray-50 uppercase text-center w-full">
+  Bienvenue sur la page Admin
+</h2>
+<button (click)="logout()" class="bg-black text-white text-xs rounded-full p-2 mb-4">
+  Se déconnecter
+</button>
 <div class="
-flex 
-  flex-col 
-  items-center 
-  justify-center 
-  min-h-screen bg-gray-50 my-28">
-    <button (click)="logout()" class="bg-black text-white text-xs mx-2 my-4 self-end rounded-full p-2 ">
-        Se déconnecter
-    </button>
-    <h2 class=" text-3xl
-    text-center 
-    font-bold 
-    text-black 
-    dark:text-gray-50 
-    px-4 py-4 uppercase">Bienvenue sur la page Admin</h2>
-    <div class="grid grid-cols-1 gap-6">
-        <app-experience-form (experienceAdded)="onExperienceAdded()"></app-experience-form>
-        <app-realisation-form (realisationAdded)="onRealisationAdded()"></app-realisation-form>
-        <app-music-form (musicAdded)="onMusicAdded()"></app-music-form>
-
-    </div>
+  grid 
+  grid-cols-2 
+  min-h-screen 
+  bg-gray-50 
+  my-28 
+  gap-6 
+  px-8">
+  
+  <!-- Colonne gauche : Navigation -->
+  <div class="flex flex-col items-start space-y-4 border-r-2">
+    
+    
+    <app-nav></app-nav> <!-- Composant de navigation pour la section Admin -->
+  </div>
+  
+  <!-- Colonne droite : Contenu -->
+  <div class="flex flex-col">
+    <router-outlet></router-outlet> <!-- Contenu dynamique pour chaque section (Experience, Réalisation, etc.) -->
+    
+    <!-- Formulaires d’édition spécifiques aux sections d’administration -->
+    <!-- Décommentez si nécessaire pour des tests directs -->
+    <!--
+    <app-experience-form (experienceAdded)="onExperienceAdded()"></app-experience-form>
+    <app-realisation-form (realisationAdded)="onRealisationAdded()"></app-realisation-form>
+    <app-music-form (musicAdded)="onMusicAdded()"></app-music-form>
+    -->
+  </div>
+</div>
