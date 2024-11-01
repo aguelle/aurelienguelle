@@ -1,9 +1,10 @@
 import { CommonModule, NgClass, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavigateService } from '../navigate.service';
 import { ThemeService } from '../theme.service';
 import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-menu',
@@ -14,7 +15,8 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
      NgClass,
        RouterLink,
     RouterLinkActive,
-  RouterModule    ],
+  RouterModule,
+FontAwesomeModule    ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
@@ -22,7 +24,11 @@ export class MenuComponent {
 
   constructor(
     public navigateService: NavigateService,
-    private themeService: ThemeService) { }
+    private themeService: ThemeService,
+    library: FaIconLibrary) { 
+      library.addIcons(faMoon, faSun);
+      ;
+    }
     
     isMenuOpen = false;
 

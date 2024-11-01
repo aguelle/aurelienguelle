@@ -7,10 +7,13 @@
 
             <button (click)="toggleTheme()" aria-label="Changer le thème">
                 <span *ngIf="isDarkMode()" class="inline-block hover:scale-150 transition-transform duration-300">
-                    🌙
+
+                    <fa-icon [icon]="['fas', 'moon']"></fa-icon>
                 </span>
                 <span *ngIf="!isDarkMode()" class="inline-block hover:scale-150 transition-transform duration-300">
-                    ☀️
+                    <fa-icon [icon]="['fas', 'sun']"></fa-icon>
+
+                    
                 </span>
             </button>
         </div>

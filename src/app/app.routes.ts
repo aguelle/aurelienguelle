@@ -12,6 +12,7 @@ import { Component } from '@angular/core';
 import { ExperienceFormComponent } from './admin/experience-form/experience-form.component';
 import { MusicFormComponent } from './admin/music-form/music-form.component';
 import { RealisationFormComponent } from './admin/realisation-form/realisation-form.component';
+import { DiplomeFormComponent } from './admin/diplome-form/diplome-form.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -28,7 +29,8 @@ export const routes: Routes = [
         children: [
             { path: 'experience-form', component: ExperienceFormComponent},
             { path: 'music-form', component: MusicFormComponent},
-            { path: 'realisation-form', component: RealisationFormComponent}
+            { path: 'realisation-form', component: RealisationFormComponent},
+            { path: 'diplome-form', component: DiplomeFormComponent}
 
         ]
     },
