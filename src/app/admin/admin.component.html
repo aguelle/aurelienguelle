@@ -1,4 +1,4 @@
-<h2 class="text-3xl m-6 font-bold text-black dark:text-gray-50 uppercase text-center w-full ">
+<h2 class="text-3xl m-6 font-bold text-black dark:text-gray-50 uppercase text-center ">
   Bienvenue sur la page Admin
 </h2>
 <button (click)="logout()" class="bg-black  text-white text-xs rounded-full p-2 m-4 hover:bg-opacity-50">
@@ -6,31 +6,14 @@
 </button>
 <div class="
   grid 
-  grid-cols-12 
-  min-h-screen 
+  grid-cols-1 lg:grid-cols-12
   bg-gray-50 
-  gap-6 
-  
+  gap-6
   m-4">
-  
-  <!-- Colonne gauche : Navigation -->
-  <div class="col-span-3 flex flex-col items-start space-y-4 border-r-2">
-    
-    
-    <app-nav></app-nav> <!-- Composant de navigation pour la section Admin -->
+  <div class="lg:col-span-2 flex flex-col items-center border-r-0 lg:border-r-2 ">
+    <app-nav></app-nav>
   </div>
-  
-  <!-- Colonne droite : Contenu -->
-  <div class="col-span-9 flex flex-col">
-    <router-outlet></router-outlet> <!-- Contenu dynamique pour chaque section (Experience, Réalisation, etc.) -->
-
-  
-    <!-- Formulaires d’édition spécifiques aux sections d’administration -->
-    <!-- Décommentez si nécessaire pour des tests directs -->
-    <!--
-    <app-experience-form (experienceAdded)="onExperienceAdded()"></app-experience-form>
-    <app-realisation-form (realisationAdded)="onRealisationAdded()"></app-realisation-form>
-    <app-music-form (musicAdded)="onMusicAdded()"></app-music-form>
-    -->
+  <div class="lg:col-span-10 flex flex-col ">
+    <router-outlet></router-outlet>
   </div>
 </div>
