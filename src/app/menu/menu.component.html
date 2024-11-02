@@ -8,10 +8,10 @@
             <button (click)="toggleTheme()" aria-label="Changer le thème">
                 <span *ngIf="isDarkMode()" class="inline-block hover:scale-150 transition-transform duration-300">
 
-                    <fa-icon [icon]="['fas', 'moon']"></fa-icon>
+                    <fa-icon [icon]="['far', 'moon']"></fa-icon>
                 </span>
                 <span *ngIf="!isDarkMode()" class="inline-block hover:scale-150 transition-transform duration-300">
-                    <fa-icon [icon]="['fas', 'sun']"></fa-icon>
+                    <fa-icon [icon]="['far', 'sun']"></fa-icon>
 
                     
                 </span>
@@ -19,19 +19,28 @@
         </div>
 
         <div class="hidden lg:flex items-center p-4 justify-center flex-grow">
-            <a routerLink="/realisations" class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
+            <a 
+            routerLink="/realisations" 
+            routerLinkActive="active"
+            class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
                 (click)="navigateService.scrollToComponent('app-realisations')" aria-label="Accéder aux réalisations">Réalisations</a>
             <span class="mx-2">|</span>
 
-            <a  routerLink="/experiences" class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
+            <a  routerLink="/experiences"
+            routerLinkActive="active"
+            class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
                 (click)="navigateService.scrollToComponent('app-experiences')" aria-label="Accéder aux expériences professionnelles">Expériences Professionnelles</a>
             <span class="mx-2">|</span>
 
-            <a  routerLink="/diplomes"class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
+            <a  routerLink="/diplomes"
+            routerLinkActive="active"
+            class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
                 (click)="navigateService.scrollToComponent('app-diplomes')" aria-label="Accéder aux diplômes et formation">Diplômes et Formation</a>
             <span class="mx-2">|</span>
 
-            <a routerLink="/contact" class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
+            <a routerLink="/contact"
+            routerLinkActive="active"
+            class="text-gray-950 dark:text-gray-50 dark:hover:bg-transparent dark:hover:text-gray-50 cursor-pointer p-2 rounded transition-opacity duration-100 hover:opacity-50"
                 (click)="navigateService.scrollToComponent('app-contact')" aria-label="Accéder à la section contact">Contact</a>
         </div> 
 

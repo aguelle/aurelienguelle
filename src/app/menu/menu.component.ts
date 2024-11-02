@@ -4,7 +4,9 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { NavigateService } from '../navigate.service';
 import { ThemeService } from '../theme.service';
 import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { faMoon } from '@fortawesome/free-regular-svg-icons';
+import { faSun  } from '@fortawesome/free-regular-svg-icons';
+
 
 @Component({
   selector: 'app-menu',
@@ -16,7 +18,7 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
        RouterLink,
     RouterLinkActive,
   RouterModule,
-FontAwesomeModule    ],
+FontAwesomeModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
@@ -26,7 +28,8 @@ export class MenuComponent {
     public navigateService: NavigateService,
     private themeService: ThemeService,
     library: FaIconLibrary) { 
-      library.addIcons(faMoon, faSun);
+      library.addIcons(faMoon, faSun); // Ajout des icônes avec le nom correct
+
       ;
     }
     
