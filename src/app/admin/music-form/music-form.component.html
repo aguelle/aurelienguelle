@@ -1,45 +1,44 @@
-<div class="border bg-gray-200  dark:bg-gray-800 p-4 rounded-lg shadow-md h-full w-full">
+<div class="border bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow-md h-full w-full">
+    <h3 class="text-lg font-bold mb-4">Liste des morceaux</h3>
+    
+    <ul>
+        <li *ngFor="let track of (tracks$ | async)" class="flex items-center justify-between p-2 border-b border-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+            <div class="flex items-center space-x-2">
+                <img *ngIf="track.albumArt" [src]="track.albumArt" alt="Album Art" width="50" class="rounded">
+                <span class="text-gray-800 dark:text-gray-200">{{ track.title }} - {{ track.artist }}</span>
+            </div>
+            <div class="space-x-1">
+                <button class="font-bold text-blue-600 hover:underline" (click)="editTrack(track)">Éditer</button>
+                <button class="font-bold text-red-600 hover:underline" (click)="deleteTrack(track.id)">Supprimer</button>
+            </div>
+        </li>
+    </ul>
 
-    <h3>Liste des morceaux</h3>
-  <ul>
-    <li *ngFor="let track of (tracks$ | async)" class="flex flex-row space-x-2">
-      {{ track.title }} - {{ track.artist }}
-      <img *ngIf="track.albumArt" [src]="track.albumArt" alt="Album Art" width="50">
-      <div class="space-x-1">
-        <button class="font-bold text-blue-600 hover:underline" (click)="editTrack(track)">Éditer</button>
-        <button class="font-bold text-red-600 hover:underline"(click)="deleteTrack(track.id)">Supprimer</button>
-    </div>
-    </li>
-  </ul>
+    <form [formGroup]="trackForm" (ngSubmit)="addTrack()" class="border space-y-4 my-6 p-4 bg-white dark:bg-gray-700 rounded-lg shadow-sm">
+        <h3 class="text-center text-xl font-bold mb-4">Ajouter un morceau</h3>
 
-
-    <form [formGroup]="trackForm" (ngSubmit)="addTrack()" class="border space-y-4 flex flex-col">
-        <h3 class="text-center text-xl font-bold">Ajouter un morceau</h3>
-
-        <div class="flex justify-between items-center">
-            <label class="mr-4 w-32 text-left" for="artist">Artiste :</label>
-            <input class="w-full rounded text-left dark:text-black" id="artist" formControlName="artist">
+        <div class="flex flex-col space-y-2">
+            <label class="font-semibold text-left" for="artist">Artiste :</label>
+            <input class="w-full rounded text-left dark:text-black dark:bg-gray-800 bg-gray-200 p-2" id="artist" formControlName="artist" placeholder="Nom de l'artiste" />
         </div>
 
-        <div class="flex justify-between items-center">
-            <label class="mr-4 w-32 text-left" for="title">Titre :</label>
-            <input class="w-full rounded text-left dark:text-black" id="title" formControlName="title">
+        <div class="flex flex-col space-y-2">
+            <label class="font-semibold text-left" for="title">Titre :</label>
+            <input class="w-full rounded text-left dark:text-black dark:bg-gray-800 bg-gray-200 p-2" id="title" formControlName="title" placeholder="Titre du morceau" />
         </div>
 
-        <div class="flex justify-between items-center">
-            <label class="mr-4 w-32 text-left" for="albumArt">Visuel (JPEG) :</label>
-            <input type="file" accept="image/jpeg" (change)="onFileSelected($event, 'albumArt')"
-                class="w-full rounded dark:text-black" />
+        <div class="flex flex-col space-y-2">
+            <label class="font-semibold text-left" for="albumArt">Visuel (JPEG) :</label>
+            <input type="file" accept="image/jpeg" (change)="onFileSelected($event, 'albumArt')" class="w-full rounded dark:text-black" />
         </div>
 
-        <div class="flex justify-between items-center">
-            <label class="mr-4 w-32 text-left" for="url">Fichier MP3 :</label>
-            <input type="file" accept="audio" (change)="onFileSelected($event, 'url')"
-                class="w-full rounded dark:text-black" />
+        <div class="flex flex-col space-y-2">
+            <label class="font-semibold text-left" for="url">Fichier MP3 :</label>
+            <input type="file" accept="audio/*" (change)="onFileSelected($event, 'url')" class="w-full rounded dark:text-black" />
         </div>
 
         <button
-            class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg"
+            class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105"
             type="submit" [disabled]="trackForm.invalid">
             Ajouter
         </button>

@@ -1,55 +1,58 @@
-<div class="border bg-gray-200  dark:bg-gray-800 p-4 rounded-lg shadow-md h-full w-full">
-    <h3 class="font-bold">Liste des réalisations</h3>
+<div class="border bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow-md h-full w-full">
+    <h3 class="font-bold text-lg mb-4">Liste des réalisations</h3>
+    
     <ul>
-        <li *ngFor="let realisation of realisations" class="flex flex-row space-x-2">
-            <span>{{ realisation.nom }}</span>
+        <li *ngFor="let realisation of realisations" class="flex justify-between items-center p-2 border-b border-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+            <span class="text-gray-800 dark:text-gray-200">{{ realisation.nom }}</span>
             <div class="space-x-1">
-                <button class="font-bold text-blue-600 hover:underline" (click)="editRealisation(realisation)" aria-label="Éditer cette expérience">Éditer</button>
+                <button class="font-bold text-blue-600 hover:underline" (click)="editRealisation(realisation)" aria-label="Éditer cette réalisation">Éditer</button>
                 <button class="font-bold text-red-600 hover:underline" (click)="deleteRealisation(realisation.id)" *ngIf="realisation.id">Supprimer</button>
             </div>
-   </li>
+        </li>
     </ul>
 
-    <form [formGroup]="realisationForm" (ngSubmit)="addRealisation()" class="border space-y-4 flex flex-col">
-        <h3 class="text-center text-xl font-bold">Ajouter une réalisation</h3>
-        <div class="flex justify-between items-center">
-            <label class="mr-4 w-32 text-left">Titre :</label>
-            <input class="w-full rounded text-left dark:text-black" formControlName="nom">
+    <form [formGroup]="realisationForm" (ngSubmit)="addRealisation()" class="border space-y-4 my-6 p-4 bg-white dark:bg-gray-700 rounded-lg shadow-sm">
+        <h3 class="text-center text-xl font-bold mb-4">Ajouter une réalisation</h3>
+        
+        <div class="flex flex-col space-y-2">
+            <label class="font-semibold text-left">Titre :</label>
+            <input class="w-full rounded text-left dark:text-black dark:bg-gray-800 bg-gray-200 p-2" formControlName="nom" placeholder="Titre de la réalisation" />
         </div>
-        <div>
-            <label class="mr-4 w-32 text-left" >Contenu :</label>
-            <textarea  formControlName="description"></textarea>
-        </div>
-        <div>
-            <label class="mr-4 w-32 text-left" >Date :</label>
-            <input class="w-full rounded text-left dark:text-black" type="date" formControlName="date">
-        </div>
-        <div>
-            <label for="visuel">Visuel (image):</label>
-            <input id="visuel" type="file" (change)="onFileSelected($event)" />
-          </div>
-        <div>
-            <label class="mr-4 w-32 text-left" >site web :</label>
-            <input class="w-full rounded text-left dark:text-black" formControlName="webSite">
+        
+        <div class="flex flex-col space-y-2">
+            <label class="font-semibold text-left">Contenu :</label>
+            <textarea class="w-full rounded text-left dark:text-black dark:bg-gray-800 bg-gray-200 p-2" formControlName="description" placeholder="Description de la réalisation"></textarea>
         </div>
 
-        <div>
-            <label class="mr-4 w-32 text-left">Spécificités techniques :</label>
+        <div class="flex flex-col space-y-2">
+            <label class="font-semibold text-left">Date :</label>
+            <input class="w-full rounded text-left dark:text-black dark:bg-gray-800 bg-gray-200 p-2" type="date" formControlName="date" />
+        </div>
+
+        <div class="flex flex-col space-y-2">
+            <label class="font-semibold text-left" for="visuel">Visuel (image) :</label>
+            <input id="visuel" type="file" (change)="onFileSelected($event)" class="rounded p-2 border border-gray-400 dark:bg-gray-800" />
+        </div>
+
+        <div class="flex flex-col space-y-2">
+            <label class="font-semibold text-left">Site web :</label>
+            <input class="w-full rounded text-left dark:text-black dark:bg-gray-800 bg-gray-200 p-2" formControlName="webSite" placeholder="URL du site web" />
+        </div>
+
+        <div class="flex flex-col space-y-2">
+            <label class="font-semibold text-left">Spécificités techniques :</label>
             <div formArrayName="technologies">
                 <label *ngFor="let tech of availableTechnologies; let i = index" class="flex items-center space-x-2">
-                    <input type="checkbox" [formControlName]="i" />
-                    <span>{{ tech.label }}</span>
+                    <input type="checkbox" [formControlName]="i" class="rounded text-blue-600 dark:bg-gray-800" />
+                    <span class="dark:text-gray-200">{{ tech.label }}</span>
                 </label>
             </div>
         </div>
 
-        
         <button 
-        class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border border-blue-500 dark:border-blue-700 transform transition-transform duration-300 ease-in-out hover:scale-105"
-        type="submit"> {{ editingRealisationId ? 'Modifier' : 'Ajouter' }} la réalisation
+            class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border border-blue-500 dark:border-blue-700 transform transition-transform duration-300 ease-in-out hover:scale-105 mt-4"
+            type="submit">
+            {{ editingRealisationId ? 'Modifier' : 'Ajouter' }} la réalisation
         </button>
     </form>
 </div>
-
-
-

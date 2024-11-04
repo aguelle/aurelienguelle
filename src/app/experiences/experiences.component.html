@@ -1,51 +1,21 @@
-<div class="py-10 my-20 lg:my-24  w-full ">
-  <h2 class="
-  text-3xl 
-  text-center 
-  font-bold 
-  text-black
-  dark:text-gray-50 
-  px-4">Mes Expériences Professionnelles 👨🏻‍💼
+<div class="py-10 my-20 lg:my-24 w-full h-min">
+  <h2 class="text-3xl text-center font-bold text-black dark:text-gray-50 px-4">Mes Expériences Professionnelles 👨🏻‍💼
   </h2>
 
   <div class="">
-    <div class="
-    grid 
-    grid-cols-1 
-    lg:grid-cols-4 
-    md:grid-cols-3
-    lg:gap-1 
-    mt-4">
+    <div class="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 lg:gap-1 mt-4">
 
-      <div *ngFor="let experience of experiences" class="
-        flex 
-        flex-col 
-        justify-between 
-        bg-white  
-        dark:bg-gray-700 
-        shadow-md 
-        p-6 
-        m-4 
-        lg:m-10 
-        rounded-lg 
-        hover:scale-105 
-        transition-transform 
-        duration-300">
+      <div *ngFor="let experience of experiences"
+        class="flex flex-col justify-between bg-white dark:bg-gray-700 shadow-md p-6 m-4 lg:m-10 rounded-lg hover:scale-105 transition-transform duration-300">
         <h3 class="font-bold">{{ experience.poste }}</h3>
         <div>
-
           <ul class="my-4 bg-gray-50 p-2 rounded-lg space-y-1">
-            <li *ngFor="let mission of experience.missions" class="
-            border-b-2 dark:text-gray-600 hover:opacity-50">{{ mission }}</li>
+            <li *ngFor="let mission of experience.missions" class="border-b-2 dark:text-gray-600 hover:opacity-50">{{
+              mission }}</li>
           </ul>
         </div>
 
-        <div class="
-        flex 
-        flex-row 
-        justify-between 
-        mt-auto 
-        items-end">
+        <div class="flex flex-row justify-between mt-auto items-end">
           <div>
             <a class="font-bold" href="{{ experience.siteWeb }}">{{ experience.entreprise }}</a>
             <p class="text-gray-600 dark:text-gray-50">{{ experience.lieu }}</p>

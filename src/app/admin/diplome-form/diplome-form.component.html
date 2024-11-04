@@ -1,37 +1,51 @@
 <div class="border bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow-md h-full w-full">
-    <h3 class="font-bold">Liste des diplômes</h3>
-    <ul>
-      <li *ngFor="let diplome of diplomes" class="flex flex-row space-x-2">
-        <span>{{ diplome.nom }}</span> <span>à</span> <span>{{ diplome.ecole }}</span>
-        <div class="space-x-1">
-          <button class="font-bold text-blue-600 hover:underline" (click)="editDiplome(diplome)" aria-label="Éditer ce diplôme">Éditer</button>
-          <button class="font-bold text-red-600 hover:underline" (click)="deleteDiplome(diplome.id)" *ngIf="diplome.id">Supprimer</button>
-        </div>
+  <h3 class="font-bold text-lg mb-4">Liste des diplômes</h3>
+  
+  <ul>
+      <li *ngFor="let diplome of diplomes" class="flex justify-between items-center p-2 border-b border-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+          <span class="text-gray-800 dark:text-gray-200">{{ diplome.nom }}</span>
+          <div class="space-x-1">
+              <button class="font-bold text-blue-600 hover:underline" (click)="editDiplome(diplome)" aria-label="Éditer ce diplôme">Éditer</button>
+              <button class="font-bold text-red-600 hover:underline" (click)="deleteDiplome(diplome.id)" *ngIf="diplome.id">Supprimer</button>
+          </div>
       </li>
-    </ul>
-  
-    <form [formGroup]="diplomeForm" (ngSubmit)="addDiplome()" class="border space-y-4 my-4 flex flex-col">
-      <label class="mr-4 w-32 text-left">Nom:</label>
-      <input class="w-full rounded text-left dark:text-black" formControlName="nom" />
-  
-      <label class="mr-4 w-32 text-left">École:</label>
-      <input class="w-full rounded text-left dark:text-black" formControlName="ecole" />
-  
-      <label class="mr-4 w-32 text-left">Lieu:</label>
-      <input class="w-full rounded text-left dark:text-black" formControlName="lieu" />
-  
-      <label class="mr-4 w-32 text-left">Date:</label>
-      <input class="w-full rounded text-left dark:text-black" type="date" formControlName="date" />
-  
-      <label class="mr-4 w-32 text-left">Compétences (séparées par des virgules):</label>
-      <input class="w-full rounded text-left dark:text-black" formControlName="competences" />
-  
-      <label class="mr-4 w-32 text-left">Site Web:</label>
-      <input class="w-full rounded text-left dark:text-black" formControlName="siteWeb" />
-  
+  </ul>
+
+  <form [formGroup]="diplomeForm" (ngSubmit)="addDiplome()" class="border space-y-4 my-6 p-4 bg-white dark:bg-gray-700 rounded-lg shadow-sm">
+      <h3 class="text-center text-xl font-bold mb-4">Ajouter un diplôme</h3>
+      
+      <div class="flex flex-col space-y-2">
+          <label class="font-semibold text-left">Nom :</label>
+          <input class="w-full rounded text-left dark:text-black dark:bg-gray-800 bg-gray-200 p-2" formControlName="nom" placeholder="Nom du diplôme" />
+      </div>
+
+      <div class="flex flex-col space-y-2">
+          <label class="font-semibold text-left">École :</label>
+          <input class="w-full rounded text-left dark:text-black dark:bg-gray-800 bg-gray-200 p-2" formControlName="ecole" placeholder="École de diplôme" />
+      </div>
+
+      <div class="flex flex-col space-y-2">
+          <label class="font-semibold text-left">Lieu :</label>
+          <input class="w-full rounded text-left dark:text-black dark:bg-gray-800 bg-gray-200 p-2" formControlName="lieu" placeholder="Lieu du diplôme" />
+      </div>
+
+      <div class="flex flex-col space-y-2">
+          <label class="font-semibold text-left">Date :</label>
+          <input class="w-full rounded text-left dark:text-black dark:bg-gray-800 bg-gray-200 p-2" type="date" formControlName="date" />
+      </div>
+
+      <div class="flex flex-col space-y-2">
+          <label class="font-semibold text-left">Compétences (séparées par des virgules) :</label>
+          <input class="w-full rounded text-left dark:text-black dark:bg-gray-800 bg-gray-200 p-2" formControlName="competences" placeholder="Compétences" />
+      </div>
+
+      <div class="flex flex-col space-y-2">
+          <label class="font-semibold text-left">Site Web :</label>
+          <input class="w-full rounded text-left dark:text-black dark:bg-gray-800 bg-gray-200 p-2" formControlName="siteWeb" placeholder="URL du site web" />
+      </div>
+
       <button
-        class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border border-blue-500 dark:border-blue-700 transform transition-transform duration-300 ease-in-out hover:scale-105"
-        type="submit">{{ editingDiplomeId ? 'Modifier' : 'Ajouter' }} le diplôme</button>
-    </form>
-  </div>
-  
+          class="bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full shadow-lg border border-blue-500 dark:border-blue-700 transform transition-transform duration-300 ease-in-out hover:scale-105 mt-4"
+          type="submit">{{ editingDiplomeId ? 'Modifier' : 'Ajouter' }} le diplôme</button>
+  </form>
+</div>
