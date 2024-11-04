@@ -1,46 +1,27 @@
 <div class="py-10 my-20 lg:my-24  w-full ">
-    <h2 class="
-    text-center 
-    text-3xl 
-    font-bold 
-    px-4">Quelques-unes de mes réalisations 👨🏻‍💻</h2>
+    <h2 class="    text-center     text-3xl     font-bold   px-4">
+        Quelques-unes de mes réalisations 👨🏻‍💻</h2>
 
     <div>
-        <div class="
-        grid 
-        grid-cols-1 
-        md:grid-cols-3 
-        gap-4 
+        <div class="       grid        grid-cols-1         md:grid-cols-3         gap-4 
         mt-10">
-            <div *ngFor="let realisation of realisations"
-            class="
-            flex
-            flex-col
-            justify-between
-            bg-white 
-            dark:bg-gray-700 
-            shadow-md
-            p-6 
-            m-4 
-            lg:m-10 
-            rounded-lg 
-            hover:scale-105 
-            transition-transform 
+            <div *ngFor="let realisation of realisations" class="flex flex-col justify-between bg-white dark:bg-gray-700 shadow-md p-6 m-4 lg:m-10 rounded-lg hover:scale-105 transition-transform 
             duration-300">
 
                 <a href="{{realisation.webSite}}" target="_blank" rel="noopener noreferrer" class="hover:opacity-50">
                     <h3 class="text-xl font-semibold dark:text-white">{{ realisation.nom }}</h3>
                 </a>
                 <div class="h-40 my-4">
-                    <img src=" {{ realisation.visuel }}" alt="{{ realisation.nom }}" class="h-full rounded transform transition-transform duration-300 hover:scale-125">
+                    <img [src]="realisation.visuel" alt="{{ realisation.nom }}"
+                        class="h-full rounded transform transition-transform duration-300 hover:scale-125">
                 </div>
                 <p class="mt-2 text-gray-700 dark:text-gray-300">
                     {{ realisation.description }}
                 </p>
                 <div class="flex mt-4 space-x-2">
                     <span *ngFor="let tech of realisation.technologies">
-                      <i [ngClass]="getTechnologyClass(tech)" class="rounded-full  text-xl p-1"></i>
+                        <i [ngClass]="getTechnologyClass(tech)" class="rounded-full  text-xl p-1"></i>
                     </span>
-                  </div>
-    
-        </div>
+                </div>
+
+            </div>
