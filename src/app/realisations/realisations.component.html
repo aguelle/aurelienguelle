@@ -37,5 +37,10 @@
                 <p class="mt-2 text-gray-700 dark:text-gray-300">
                     {{ realisation.description }}
                 </p>
-            </div>
+                <div class="flex mt-4 space-x-2">
+                    <span *ngFor="let tech of realisation.technologies">
+                      <i [ngClass]="getTechnologyClass(tech)" class="rounded-full  text-xl p-1"></i>
+                    </span>
+                  </div>
+    
         </div>

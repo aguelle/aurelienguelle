@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, collectionData, doc, docData, deleteDoc, updateDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, docData, deleteDoc, updateDoc, addDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 
 export interface Realisation {
   id?: string; // ID optionnel
-  date:string;
+  date: string;
   description: string;
   nom: string;
-  visuel:string;
+  visuel: string;
   webSite: string;
+  technologies: string[];
 }
 
 @Injectable({
@@ -37,6 +38,17 @@ export class RealisationsService {
   updateRealisation(id: string, realisation: Realisation): Promise<void> {
     const realisationDoc = doc(this.firestore, `realisations/${id}`);
     return updateDoc(realisationDoc, { ...realisation });
+  }
+  
+  async addRealisation(realisation: Realisation): Promise<void> {
+    const realisationsCollection = collection(this.firestore, 'realisations');
+    try {
+      await addDoc(realisationsCollection, realisation);
+      return console.log("Réalisation ajoutée avec succès !");
+    } catch (error) {
+      console.error("Erreur lors de l'ajout de la réalisation :", error);
+      throw error;
+    }
   }
 
 }

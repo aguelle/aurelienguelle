@@ -13,7 +13,18 @@ import { map } from 'rxjs';
 export class RealisationsComponent implements OnInit {
 realisations: Realisation[] = [];
 
+technologyClasses: { [key: string]: string } = {
+  angular: 'devicon-angular-plain ',
+  html: 'devicon-html5-plain colored',
+  css: 'devicon-css3-plain colored',
+  javascript: 'devicon-javascript-plain colored',
+  php: 'devicon-php-plain colored',
+  sql: 'devicon-mysql-plain colored',
+  firebase: 'devicon-firebase-plain colored' // Ajoutez ici d'autres technologies si nécessaire
+};
+
 constructor(private realisationsService: RealisationsService) {}
+     // Ajout des icônes avec le nom correct
 
   ngOnInit(): void {
     this.realisationsService.getRealisations().pipe(
@@ -28,6 +39,8 @@ constructor(private realisationsService: RealisationsService) {}
       this.realisations = sortedRealisations
     });}
 
-
+    getTechnologyClass(technology: string): string {
+      return this.technologyClasses[technology] || 'devicon-unknown-plain'; // Classe par défaut pour une technologie inconnue
+    }
 
 }

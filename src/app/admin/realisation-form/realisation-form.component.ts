@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Firestore, addDoc, collection } from '@angular/fire/firestore';
+import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RealisationsService, Realisation } from '../../realisations.service';
 import { CommonModule } from '@angular/common';
 
@@ -16,17 +15,30 @@ export class RealisationFormComponent implements OnInit {
   realisations: Realisation[] = [];
   editingRealisationId: string | null = null;
 
+  availableTechnologies = [
+    { label: 'Angular', value: 'angular' },
+    { label: 'HTML', value: 'html' },
+    { label: 'CSS', value: 'css' },
+    { label: 'JavaScript', value: 'javascript' },
+    { label: 'PHP', value: 'php' },
+    { label: 'SQL', value: 'sql' },
+    { label: 'firebase', value: 'firebase' },
+    { label: 'typescript', value: 'typescript' },
+    // Ajoutez d'autres technologies si nécessaire
+  ]
+
 
   constructor(
     private fb: FormBuilder,
     private realisationsServices: RealisationsService,
-    private firestore: Firestore
   ) {
     this.realisationForm = this.fb.group({
       nom: ['', Validators.required],
       description: ['', Validators.required],
       date: ['', Validators.required],
-      visuel: ['']
+      visuel: [''],
+      technologies: this.fb.array(this.availableTechnologies.map(() => this.fb.control(false)))
+
     });
   }
 
@@ -36,20 +48,30 @@ export class RealisationFormComponent implements OnInit {
     });
   }
 
+  get technologies(): FormArray {
+    return this.realisationForm.get('technologies') as FormArray;
+  }
+
   async addRealisation() {
     if (this.realisationForm.invalid) {
       alert('Veuillez remplir tous les champs obligatoires.');
       return;    }
-    
-      const realisation: Realisation = this.realisationForm.value;
+
+      const selectedTechnologies = this.availableTechnologies
+      .filter((_, index) => this.technologies.at(index).value)
+      .map(tech => tech.value);
+
+      const realisation: Realisation = {
+        ...this.realisationForm.value,
+        technologies: selectedTechnologies
+      };
 
       try {
         if (this.editingRealisationId) {
           await this.realisationsServices.updateRealisation(this.editingRealisationId, realisation);
           alert('Réalisation modifiée avec succès');
         } else {
-          const realisationsRef = collection(this.firestore, 'realisations');
-          await addDoc(realisationsRef, realisation);
+          await this.realisationsServices.addRealisation(realisation); // Appel au service pour l'ajout
           alert('Réalisation ajoutée avec succès');
         }
         this.realisationForm.reset();
@@ -63,6 +85,12 @@ export class RealisationFormComponent implements OnInit {
     editRealisation(realisation: Realisation) {
       this.editingRealisationId = realisation.id ?? null; // Assurez-vous que si id est undefined, il devient null
       this.realisationForm.patchValue(realisation);
+
+      if (realisation.technologies) {
+        this.availableTechnologies.forEach((tech, index) => {
+          this.technologies.at(index).setValue(realisation.technologies.includes(tech.value));
+        });
+      }
     }
   
     async deleteRealisation(id: string) {
